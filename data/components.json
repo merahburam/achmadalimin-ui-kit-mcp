@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "name": "@achmadalimin/ui-kit",
+    "stylesUrl": "https://achmadalimin.com/assets/css/ui-kit.css",
+    "npm": "npm install @achmadalimin/ui-kit",
+    "import": "import \"@achmadalimin/ui-kit/styles.css\";",
+    "docs": "https://achmadalimin.com/design-system",
+    "theming": "Dark mode is the default. Set data-theme=\"light\" on <html> for light mode. Every color/spacing/radius is a CSS custom property (prefixed --color-* / --space-* / --radius-*) you can override.",
+    "conventions": "Component classes are prefixed with ui- (e.g. .ui-btn, .ui-modal). Modifiers use -- (e.g. .ui-btn--primary)."
+  },
+  "components": [
+    {
+      "name": "accordion",
+      "title": "Accordion",
+      "description": "Expand/collapse sections for FAQs or grouped content. Requires a small script to toggle aria-expanded and the .open class.",
+      "classes": ["ui-accordion", "ui-accordion-item", "ui-accordion-trigger", "ui-accordion-content", "ui-accordion-chevron"],
+      "html": "<div class=\"ui-accordion\">\n  <div class=\"ui-accordion-item\">\n    <button class=\"ui-accordion-trigger\" aria-expanded=\"false\">\n      Accordion title\n      <svg class=\"ui-accordion-chevron\" width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\">\n        <path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n      </svg>\n    </button>\n    <div class=\"ui-accordion-content\">\n      Accordion content goes here.\n    </div>\n  </div>\n</div>",
+      "script": "document.querySelectorAll(\".ui-accordion-trigger\").forEach(t => {\n  t.addEventListener(\"click\", () => {\n    const open = t.getAttribute(\"aria-expanded\") === \"true\";\n    t.setAttribute(\"aria-expanded\", !open);\n    t.nextElementSibling.classList.toggle(\"open\", !open);\n  });\n});"
+    },
+    {
+      "name": "badge",
+      "title": "Badge",
+      "description": "Inline pill for status, counts, or labels.",
+      "classes": ["ui-badge", "ui-badge--default", "ui-badge--success", "ui-badge--warning", "ui-badge--error", "ui-badge--outline"],
+      "html": "<span class=\"ui-badge ui-badge--default\">Default</span>\n<span class=\"ui-badge ui-badge--success\">Success</span>\n<span class=\"ui-badge ui-badge--warning\">Warning</span>\n<span class=\"ui-badge ui-badge--error\">Error</span>\n<span class=\"ui-badge ui-badge--outline\">Outline</span>"
+    },
+    {
+      "name": "banner",
+      "title": "Banner",
+      "description": "Full-width inline notification. Variants: --info, --success, --warning, --error. Add a .ui-banner-close button to make it dismissible.",
+      "classes": ["ui-banner", "ui-banner--info", "ui-banner--success", "ui-banner--warning", "ui-banner--error", "ui-banner-body", "ui-banner-close"],
+      "html": "<div class=\"ui-banner ui-banner--info\">\n  <svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\">\n    <circle cx=\"8\" cy=\"8\" r=\"6.5\" stroke=\"currentColor\" stroke-width=\"1.3\"/>\n    <path d=\"M8 5v4M8 11v.5\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>\n  </svg>\n  <span class=\"ui-banner-body\">Info message here.</span>\n</div>\n\n<!-- Variants: ui-banner--info | ui-banner--success | ui-banner--warning | ui-banner--error -->"
+    },
+    {
+      "name": "button",
+      "title": "Button",
+      "description": "Variants: --primary, --secondary, --outline, --ghost. Sizes: --sm, --lg, --icon. Add the disabled attribute for the disabled state. The same class works on <a> or <button>.",
+      "classes": ["ui-btn", "ui-btn--primary", "ui-btn--secondary", "ui-btn--outline", "ui-btn--ghost", "ui-btn--sm", "ui-btn--lg", "ui-btn--icon"],
+      "html": "<button class=\"ui-btn ui-btn--primary\">Primary</button>\n<button class=\"ui-btn ui-btn--secondary\">Secondary</button>\n<button class=\"ui-btn ui-btn--outline\">Outline</button>\n<button class=\"ui-btn ui-btn--ghost\">Ghost</button>\n\n<!-- Sizes -->\n<button class=\"ui-btn ui-btn--primary ui-btn--sm\">Small</button>\n<button class=\"ui-btn ui-btn--primary ui-btn--lg\">Large</button>\n\n<!-- Icon-only (pass aria-label) -->\n<button class=\"ui-btn ui-btn--primary ui-btn--icon\" aria-label=\"Share\">\n  <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><!-- icon --></svg>\n</button>\n\n<!-- Disabled -->\n<button class=\"ui-btn ui-btn--primary\" disabled>Primary</button>"
+    },
+    {
+      "name": "card",
+      "title": "Card",
+      "description": "Container with optional header (title + subtitle), body, and footer. All regions are optional — compose freely.",
+      "classes": ["ui-card", "ui-card-header", "ui-card-title", "ui-card-subtitle", "ui-card-body", "ui-card-footer"],
+      "html": "<div class=\"ui-card\">\n  <div class=\"ui-card-header\">\n    <p class=\"ui-card-title\">Card title</p>\n    <p class=\"ui-card-subtitle\">Supporting description text</p>\n  </div>\n  <div class=\"ui-card-body\">\n    Card body content goes here.\n  </div>\n  <div class=\"ui-card-footer\">\n    <button class=\"ui-btn ui-btn--primary\">Save changes</button>\n    <button class=\"ui-btn ui-btn--ghost\">Cancel</button>\n  </div>\n</div>"
+    },
+    {
+      "name": "input",
+      "title": "Input",
+      "description": "Text field. Pair with .ui-label and .ui-hint. Add .ui-input--error for the error state.",
+      "classes": ["ui-input", "ui-input--error", "ui-label", "ui-hint", "ui-hint--error"],
+      "html": "<label class=\"ui-label\" for=\"name\">Name</label>\n<input class=\"ui-input\" id=\"name\" type=\"text\" placeholder=\"Placeholder text\" />\n<span class=\"ui-hint\">Helper text below the field.</span>\n\n<!-- Error state -->\n<input class=\"ui-input ui-input--error\" type=\"text\" />\n<span class=\"ui-hint ui-hint--error\">This field is required.</span>"
+    },
+    {
+      "name": "modal",
+      "title": "Modal",
+      "description": "Overlay dialog. Add .open to .ui-modal-overlay to show it. Closes on backdrop click or Escape (wire your own handlers, or use the inline onclick shown).",
+      "classes": ["ui-modal-overlay", "ui-modal-overlay.open", "ui-modal", "ui-modal-title", "ui-modal-body", "ui-modal-actions", "ui-modal-btn", "ui-modal-btn--cancel", "ui-modal-btn--confirm"],
+      "html": "<!-- Trigger -->\n<button class=\"ui-btn ui-btn--primary\" onclick=\"document.getElementById('myModal').classList.add('open')\">\n  Open modal\n</button>\n\n<!-- Modal -->\n<div class=\"ui-modal-overlay\" id=\"myModal\">\n  <div class=\"ui-modal\" role=\"dialog\" aria-modal=\"true\">\n    <p class=\"ui-modal-title\">Modal title</p>\n    <p class=\"ui-modal-body\">Modal content goes here.</p>\n    <div class=\"ui-modal-actions\">\n      <button class=\"ui-modal-btn ui-modal-btn--cancel\" onclick=\"document.getElementById('myModal').classList.remove('open')\">Cancel</button>\n      <button class=\"ui-modal-btn ui-modal-btn--confirm\">Confirm</button>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "name": "tabs",
+      "title": "Tabs",
+      "description": "Horizontal tab navigation with an animated slider indicator. Requires a script to switch the active trigger/panel and move the slider.",
+      "classes": ["ui-tabs", "ui-tabs--sm", "ui-tabs-list", "ui-tabs-slider", "ui-tab-trigger", "ui-tab-panel"],
+      "html": "<div class=\"ui-tabs\">\n  <div class=\"ui-tabs-list\" role=\"tablist\">\n    <div class=\"ui-tabs-slider\"></div>\n    <button class=\"ui-tab-trigger active\" aria-selected=\"true\" role=\"tab\">Overview</button>\n    <button class=\"ui-tab-trigger\" aria-selected=\"false\" role=\"tab\">Details</button>\n    <button class=\"ui-tab-trigger\" aria-selected=\"false\" role=\"tab\">Settings</button>\n  </div>\n  <div class=\"ui-tab-panel active\">Overview content</div>\n  <div class=\"ui-tab-panel\">Details content</div>\n  <div class=\"ui-tab-panel\">Settings content</div>\n</div>",
+      "script": "document.querySelectorAll(\".ui-tabs\").forEach(tabs => {\n  const list = tabs.querySelector(\".ui-tabs-list\");\n  const slider = list.querySelector(\".ui-tabs-slider\");\n  const triggers = list.querySelectorAll(\".ui-tab-trigger\");\n  const panels = tabs.querySelectorAll(\".ui-tab-panel\");\n  function moveSlider(btn) {\n    slider.style.width = btn.offsetWidth + \"px\";\n    slider.style.transform = \"translateX(\" + (btn.offsetLeft - 2) + \"px)\";\n  }\n  slider.style.transition = \"none\";\n  const initial = list.querySelector(\".ui-tab-trigger.active\");\n  if (initial) requestAnimationFrame(() => { moveSlider(initial); requestAnimationFrame(() => { slider.style.transition = \"\"; }); });\n  triggers.forEach((t, i) => t.addEventListener(\"click\", () => {\n    triggers.forEach(x => { x.classList.remove(\"active\"); x.setAttribute(\"aria-selected\", \"false\"); });\n    panels.forEach(p => p.classList.remove(\"active\"));\n    t.classList.add(\"active\"); t.setAttribute(\"aria-selected\", \"true\");\n    panels[i].classList.add(\"active\");\n    moveSlider(t);\n  }));\n});"
+    },
+    {
+      "name": "tooltip",
+      "title": "Tooltip",
+      "description": "Hover tooltip on a wrapped element. Default placement is top; add .ui-tooltip--bottom for bottom. CSS-only — no script needed.",
+      "classes": ["ui-tooltip-wrap", "ui-tooltip", "ui-tooltip--bottom", "ui-tooltip--right"],
+      "html": "<!-- Top (default) -->\n<div class=\"ui-tooltip-wrap\">\n  <button class=\"ui-btn ui-btn--secondary\">Hover me</button>\n  <div class=\"ui-tooltip\">Tooltip text</div>\n</div>\n\n<!-- Bottom -->\n<div class=\"ui-tooltip-wrap\">\n  <button class=\"ui-btn ui-btn--secondary\">Hover me</button>\n  <div class=\"ui-tooltip ui-tooltip--bottom\">Tooltip text</div>\n</div>"
+    }
+  ],
+  "tokens": {
+    "color": {
+      "--color-bg": "#0f0f0f",
+      "--color-surface": "#2a2a2a",
+      "--color-surface-hover": "#222222",
+      "--color-border": "#2e2e2e",
+      "--color-border-subtle": "#1f1f1f",
+      "--color-text": "#f0f0f0",
+      "--color-text-muted": "#777777",
+      "--color-text-faint": "#3d3d3d",
+      "--color-accent": "#e8e8e8",
+      "--color-accent-hover": "#ffffff",
+      "--color-link": "#999999",
+      "--color-link-hover": "#f0f0f0",
+      "--color-success": "#4ade80",
+      "--color-warning": "#fbbf24",
+      "--color-error": "#f87171"
+    },
+    "note": "These are the dark-mode (default) values. Light mode overrides them under html[data-theme=\"light\"]. The full token set (spacing --space-*, radius --radius-*, typography, shadows) lives in the bundled stylesheet. Override any token in your own CSS to retheme."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@achmadalimin/ui-kit-mcp",
+  "version": "1.0.0",
+  "description": "Make Achmad Alimin's design system (@achmadalimin/ui-kit) AI-native. Gives Claude, Cursor, and Windsurf the real component markup and tokens via the Model Context Protocol.",
+  "type": "module",
+  "bin": {
+    "ui-kit-mcp": "index.js"
+  },
+  "files": [
+    "index.js",
+    "data/components.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "author": "Achmad Alimin <contact@achmadalimin.com> (https://achmadalimin.com)",
+  "homepage": "https://achmadalimin.com/design-system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merahburam/achmadalimin-ui-kit-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "design-system",
+    "ui",
+    "components",
+    "css",
+    "ai"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
