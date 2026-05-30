@@ -1,9 +1,9 @@
 # @achmadalimin/ui-kit-mcp
 
 Make the [@achmadalimin/ui-kit](https://achmadalimin.com/design-system) design
-system AI-native. This MCP server gives Claude, Cursor, and Windsurf the **real**
-component markup and design tokens — so when you ask your AI to build UI "using
-Achmad's design system," it uses the actual `ui-kit` components instead of
+system AI-native. This MCP server gives Claude, Codex, Cursor, and Windsurf the
+**real** component markup and design tokens — so when you ask your AI to build UI
+"using Achmad's design system," it uses the actual `ui-kit` components instead of
 inventing generic markup.
 
 Free and open. No license key, no account, no network calls — the component
@@ -21,7 +21,7 @@ catalog ships inside the package.
 ## Requirements
 
 - Node.js 18+
-- Claude Desktop, Cursor, or Windsurf
+- Claude Desktop, Codex, Cursor, or Windsurf
 
 ## Setup
 
@@ -42,6 +42,19 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 ```
 
 Restart Claude Desktop.
+
+### Codex
+
+Codex uses TOML (not JSON). Edit `~/.codex/config.toml` (shared by the Codex app,
+CLI, and IDE extension):
+
+```toml
+[mcp_servers.achmad-ui-kit]
+command = "npx"
+args = ["@achmadalimin/ui-kit-mcp"]
+```
+
+Or run `codex mcp add achmad-ui-kit -- npx @achmadalimin/ui-kit-mcp`, then restart Codex.
 
 ### Cursor
 
