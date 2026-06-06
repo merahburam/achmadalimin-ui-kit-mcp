@@ -1,6 +1,6 @@
 {
   "name": "@achmadalimin/ui-kit-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Make Achmad Alimin's design system (@achmadalimin/ui-kit) AI-native. Gives Claude, Cursor, and Windsurf the real component markup and tokens via the Model Context Protocol.",
   "type": "module",
   "bin": {
