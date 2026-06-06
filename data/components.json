@@ -60,12 +60,26 @@
       "html": "<!-- Trigger -->\n<button class=\"ui-btn ui-btn--primary\" onclick=\"document.getElementById('myModal').classList.add('open')\">\n  Open modal\n</button>\n\n<!-- Modal -->\n<div class=\"ui-modal-overlay\" id=\"myModal\">\n  <div class=\"ui-modal\" role=\"dialog\" aria-modal=\"true\">\n    <p class=\"ui-modal-title\">Modal title</p>\n    <p class=\"ui-modal-body\">Modal content goes here.</p>\n    <div class=\"ui-modal-actions\">\n      <button class=\"ui-modal-btn ui-modal-btn--cancel\" onclick=\"document.getElementById('myModal').classList.remove('open')\">Cancel</button>\n      <button class=\"ui-modal-btn ui-modal-btn--confirm\">Confirm</button>\n    </div>\n  </div>\n</div>"
     },
     {
+      "name": "pager",
+      "title": "Pager",
+      "description": "Compact previous / next control with a center divider, for stepping through paged content like carousels or empty-state demos. Add the disabled attribute to an arrow at the ends of the range. CSS-only — wire your own click handlers.",
+      "classes": ["ui-pager", "ui-pager-btn", "ui-pager-divider"],
+      "html": "<div class=\"ui-pager\" role=\"group\" aria-label=\"Pages\">\n  <button class=\"ui-pager-btn\" type=\"button\" aria-label=\"Previous\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\">\n      <path d=\"M15 6l-6 6 6 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n    </svg>\n  </button>\n  <span class=\"ui-pager-divider\" aria-hidden=\"true\"></span>\n  <button class=\"ui-pager-btn\" type=\"button\" aria-label=\"Next\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\">\n      <path d=\"M9 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n    </svg>\n  </button>\n</div>\n\n<!-- Disable an arrow at the end of the range -->\n<button class=\"ui-pager-btn\" type=\"button\" aria-label=\"Previous\" disabled>...</button>"
+    },
+    {
       "name": "tabs",
       "title": "Tabs",
       "description": "Horizontal tab navigation with an animated slider indicator. Requires a script to switch the active trigger/panel and move the slider.",
       "classes": ["ui-tabs", "ui-tabs--sm", "ui-tabs-list", "ui-tabs-slider", "ui-tab-trigger", "ui-tab-panel"],
       "html": "<div class=\"ui-tabs\">\n  <div class=\"ui-tabs-list\" role=\"tablist\">\n    <div class=\"ui-tabs-slider\"></div>\n    <button class=\"ui-tab-trigger active\" aria-selected=\"true\" role=\"tab\">Overview</button>\n    <button class=\"ui-tab-trigger\" aria-selected=\"false\" role=\"tab\">Details</button>\n    <button class=\"ui-tab-trigger\" aria-selected=\"false\" role=\"tab\">Settings</button>\n  </div>\n  <div class=\"ui-tab-panel active\">Overview content</div>\n  <div class=\"ui-tab-panel\">Details content</div>\n  <div class=\"ui-tab-panel\">Settings content</div>\n</div>",
       "script": "document.querySelectorAll(\".ui-tabs\").forEach(tabs => {\n  const list = tabs.querySelector(\".ui-tabs-list\");\n  const slider = list.querySelector(\".ui-tabs-slider\");\n  const triggers = list.querySelectorAll(\".ui-tab-trigger\");\n  const panels = tabs.querySelectorAll(\".ui-tab-panel\");\n  function moveSlider(btn) {\n    slider.style.width = btn.offsetWidth + \"px\";\n    slider.style.transform = \"translateX(\" + (btn.offsetLeft - 2) + \"px)\";\n  }\n  slider.style.transition = \"none\";\n  const initial = list.querySelector(\".ui-tab-trigger.active\");\n  if (initial) requestAnimationFrame(() => { moveSlider(initial); requestAnimationFrame(() => { slider.style.transition = \"\"; }); });\n  triggers.forEach((t, i) => t.addEventListener(\"click\", () => {\n    triggers.forEach(x => { x.classList.remove(\"active\"); x.setAttribute(\"aria-selected\", \"false\"); });\n    panels.forEach(p => p.classList.remove(\"active\"));\n    t.classList.add(\"active\"); t.setAttribute(\"aria-selected\", \"true\");\n    panels[i].classList.add(\"active\");\n    moveSlider(t);\n  }));\n});"
+    },
+    {
+      "name": "toggle",
+      "title": "Toggle",
+      "description": "On / off switch built from a visually-hidden checkbox, so it stays keyboard-accessible and form-friendly. Wrap it in a <label> so the text toggles the switch too. Add checked for on, disabled for the disabled state. CSS-only — no script needed.",
+      "classes": ["ui-toggle", "ui-toggle-switch", "ui-toggle-label"],
+      "html": "<label class=\"ui-toggle\">\n  <input type=\"checkbox\" />\n  <span class=\"ui-toggle-switch\" aria-hidden=\"true\"></span>\n  <span class=\"ui-toggle-label\">Show the empty state</span>\n</label>\n\n<!-- On by default -->\n<label class=\"ui-toggle\">\n  <input type=\"checkbox\" checked />\n  <span class=\"ui-toggle-switch\" aria-hidden=\"true\"></span>\n  <span class=\"ui-toggle-label\">On by default</span>\n</label>\n\n<!-- Disabled -->\n<label class=\"ui-toggle\">\n  <input type=\"checkbox\" disabled />\n  <span class=\"ui-toggle-switch\" aria-hidden=\"true\"></span>\n  <span class=\"ui-toggle-label\">Disabled</span>\n</label>"
     },
     {
       "name": "tooltip",
